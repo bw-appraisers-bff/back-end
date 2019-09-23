@@ -7,7 +7,7 @@ exports.up = function(knex) {
       // minimal length 
         .notNullable()
         .unique()
-        tbl.string('password', 256).notNullable().min(6);
+        tbl.string('password', 256).notNullable();
         // minimal length 
   })
   .createTable('houses', tbl => {
@@ -40,15 +40,15 @@ exports.up = function(knex) {
         .onUpdate('CASCADE')
     tbl.string('name', 256)
         .notNullable()
-    tbl.number('interestLevel', 3)
-       
+    tbl.integer('interestLevel', 3)
+    tbl.primary(['userID', 'houseID'])
     })
     
 };
 
 exports.down = function(knex) {
   return knex.schema 
+  .dropTableIfExists('fav')
   .dropTableIfExists('houses')
   .dropTableIfExists('users')
-  .dropTableIfExists('fav')
 };
