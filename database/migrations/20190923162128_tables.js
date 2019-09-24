@@ -7,7 +7,7 @@ exports.up = function(knex) {
       // minimal length 
         .notNullable()
         .unique()
-        tbl.string('password', 256).notNullable();
+      tbl.string('password', 256).notNullable();
         // minimal length 
   })
   .createTable('houses', tbl => {

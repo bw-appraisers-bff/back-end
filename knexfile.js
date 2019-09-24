@@ -3,7 +3,13 @@ module.exports = {
     client: 'sqlite3',
     useNullAsDefault: true,
     connection: {
-      filename: './zillow.db3'
+      filename: './database/zillow.db3'
+    },
+    migrations: {
+      directory: './database/migrations'
+    },
+    seeds: {
+      directory: './database/migrations'
     },
     pool: {
       afterCreate: (conn, done) => {
