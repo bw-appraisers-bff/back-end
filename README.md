@@ -17,6 +17,21 @@ https://appraisersbff.herokuapp.com/
     }
 
 /houses
-
+  - receive back =>
+    {
+    "id": 1,
+    "zipCode": 90210,
+    "yearBuilt": 1960,
+    "squareFootage": 1000,
+    "bedrooms": 10,
+    "bathrooms": 5.5
+  }
 
 /fav
+  - receive back =>
+    {
+    "userID": 1,
+    "houseID": 1,
+    "name": "Cool house",
+    "interestLevel": 75
+  }
