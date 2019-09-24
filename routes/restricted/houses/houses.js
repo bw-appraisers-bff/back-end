@@ -2,14 +2,15 @@ const express = require('express');
 const router = express.Router();
 const Houses = require('./housesModel');
 //const mw = require('./housesMiddleware');
+const authMiddleware = require('../../../auth/authMiddleware');
 
-router.get('/', (req, res) => {
+router.get('/', authMiddleware, (req, res) => {
     Houses.find()
     .then(houses => res.status(200).json(houses))
     .catch(err => res.status(400).json({ err: err.message }))
 });
 
-router.get('/:id', (req, res) => {
+router.get('/:id', authMiddleware, (req, res) => {
     const { id } = req.params
 
     Houses.findById(id)
@@ -17,7 +18,7 @@ router.get('/:id', (req, res) => {
     .catch(err => res.status(400).json({ err: err.message }))
 });
 
-router.post('/', (req, res) => {
+router.post('/', authMiddleware, (req, res) => {
     const newHouse = req.body;
 
     Houses.add(newHouse)
@@ -25,7 +26,7 @@ router.post('/', (req, res) => {
         .catch(err => res.status(400).json({ err: err.message }))
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:id', authMiddleware, (req, res) => {
     const { id } = req.params;
     const changes = req.body;
 
@@ -34,7 +35,7 @@ router.put('/:id', (req, res) => {
         .catch(err => res.status(400).json({ err: err.message }))
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', authMiddleware, (req, res) => {
     const { id } = req.params;
 
     Houses.remove(id)
