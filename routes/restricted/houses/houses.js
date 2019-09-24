@@ -4,12 +4,8 @@ const Houses = require('./housesModel');
 //const mw = require('./housesMiddleware');
 
 router.get('/', (req, res) => {
-    console.log('invoked')
     Houses.find()
-    .then(houses => {
-        console.log('get', houses)
-        res.status(200).json(houses)
-    })
+    .then(houses => res.status(200).json(houses))
     .catch(err => res.status(400).json({ err: err.message }))
 });
 
