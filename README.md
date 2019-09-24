@@ -18,11 +18,13 @@ https://appraisersbff.herokuapp.com/
   new user<br/>
 
 
-/about<br/>
+/about **no login needed map through data** <br/>
   - receive back =><br/>
-    { <br/>
-      test: "on the right track!"})<br/>
-    }<br/>
+   { <br/>
+   test:  <br/>
+      ["The","app","works"] <br/>
+      } <br/>
+   <br/>
 
 /houses ***NEED AUTH*** <br/>
   - receive back =><br/>
