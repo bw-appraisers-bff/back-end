@@ -6,4 +6,4 @@ server.get('/', (req, res) => {
     res.json({ test: "on the right track!"})
 });
 
-module.exports = router
+module.exports = router;
