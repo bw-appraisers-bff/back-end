@@ -1,8 +1,9 @@
 const express = require('express');
+const router = express()
 
-const db = require('../../api/db-config');
+// const db = require('../../api/db-config');
 
-server.get('/', (req, res) => {
+router.get('/', (req, res) => {
     res.json({ test: "on the right track!"})
 });
 
