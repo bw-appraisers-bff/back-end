@@ -8,15 +8,23 @@ https://appraisersbff.herokuapp.com/
     {<br/>
      "test": "its up"<br/>
     }<br/>
+    
+  /auth/login<br/>
+    auth login test info:<br/>
+  username: admin<br/>
+  password: password1234<br/>
+  
+  /auth/register<br/>
+  new user<br/>
 
 
-/about
+/about<br/>
   - receive back =><br/>
     { <br/>
       test: "on the right track!"})<br/>
     }<br/>
 
-/houses
+/houses ***NEED AUTH*** <br/>
   - receive back =><br/>
     {<br/>
     "id": 1,<br/>
@@ -27,7 +35,7 @@ https://appraisersbff.herokuapp.com/
     "bathrooms": 5.5<br/>
   }<br/>
 
-/fav<br/>
+/fav ***NEED AUTH***<br/>
   - receive back =><br/>
     {<br/>
     "userID": 1,<br/>
