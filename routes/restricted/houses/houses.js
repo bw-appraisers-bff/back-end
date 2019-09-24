@@ -1,12 +1,23 @@
+const axios = require('axios');
 const express = require('express');
 const router = express.Router();
 const Houses = require('./housesModel');
 const mw = require('./housesMiddleware');
 const authMiddleware = require('../../../auth/authMiddleware');
 
+
 router.get('/', authMiddleware, (req, res) => {
     Houses.find()
-    .then(houses => res.status(200).json(houses))
+    .then(houses => {
+        
+        //move this to post
+        res.status(200).json(houses)
+//axios.get string interpolate link replace values(key,value) 
+        axios.post(`https://appraisers-bff.herokuapp.com/?bedrooms=3&bathrooms=2&squarefeet=1800&zipcode=96337&yearbuilt=1979`)
+        .then()
+        .catch(err)
+        //nested get ""
+    }) 
     .catch(err => res.status(400).json({ err: err.message }))
 });
 

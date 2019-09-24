@@ -4,7 +4,7 @@ const router = express.Router();
 // const db = require('../../api/db-config');
 
 router.get('/', (req, res) => {
-    res.json({ test: "on the right track!"})
+    res.json({ test: ["The","app","works"]})
 });
 
 module.exports = router;
