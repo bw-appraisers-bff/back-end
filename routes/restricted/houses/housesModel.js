@@ -20,14 +20,14 @@ function findById(id) {
 
 function add(obj) {
   return db('houses')
-    .insert(obj)
+    .insert(obj, 'id')
     .then(idArr => findById(idArr[0]))
 };
 
 function update(id, changes) {
   return db('houses')
     .where({ id })
-    .update(changes, 'id')
+    .update(changes)
     .then(count => findById(id))
 };
 
