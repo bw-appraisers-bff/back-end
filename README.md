@@ -1,11 +1,24 @@
-# Hosted at: https://appraisersbff.herokuapp.com/
+Hosted at: https://appraisersbff.herokuapp.com/
+
+# SANITY CHECK
+
+method url: **/**
+
+> http method: **[GET]**
+
+**Example Response:** status 200 (OK)
+```
+{
+  "test": "it's up"
+}
+```
 
 # REGISTER & LOGIN ENDPOINTS
 
-## Registering a user
+### Registering a user
 method url: **/auth/register**
 
-http method: **[POST]**
+> http method: **[POST]**
 
 **Body**
 
@@ -24,10 +37,12 @@ http method: **[POST]**
 
 **Example Response:** status 201 (Created)
 
-## Logging in a user
+===============================================================================
+
+### Logging in a user
 method url: **/auth/login**
 
-http method: **[POST]**
+> http method: **[POST]**
 
 **Body**
 
@@ -56,44 +71,89 @@ http method: **[POST]**
   "message": "Invalid credentials"
 }
 ```
+
 # ABOUT ENDPOINT
+
+**NO AUTHENTICATION REQUIRED**
+
+method url: **/about**
+
+http method: **[GET]**
+
+**Example Response:** status 200 (OK)
+```
+{
+  "test": ["the", "app", "works" ]
+}
+```
+
 # HOUSES ENDPOINT
+
+**AUTHENTICATION REQUIRED**
+
+method url: **/houses**
+
+> http method: **[GET]**
+
+**Example Response:** status 200 (OK)
+```
+[
+  {
+    "id": 1,
+    "zipCode": 90210,
+    "yearBuilt": 1960,
+    "squareFootage": 1000,
+    "bedrooms": 10,
+    "bathrooms": 5.5
+  },
+  {
+    "id": 2,
+    "zipCode": 10024,
+    "yearBuilt": 1975,
+    "squareFootage": 2500,
+    "bedrooms": 1,
+    "bathrooms": 0.5
+  },
+  {
+    etc..
+  },
+]
+```
+
 # FAV ENDPOINT
 
-# back-end
-  
-sanity GET request
-https://appraisersbff.herokuapp.com/
-  - receive back =><br/>
-    {<br/>
-     "test": "its up"<br/>
-    }<br/>
-    
+**AUTHENTICATION REQUIRED**
 
-/about **no login needed map through data** <br/>
-  - receive back =><br/>
-   { <br/>
-   test:  <br/>
-      ["The","app","works"] <br/>
-      } <br/>
-   <br/>
+method url: **/fav**
 
-/houses ***NEED AUTH*** <br/>
-  - receive back =><br/>
-    {<br/>
-    "id": 1,<br/>
-    "zipCode": 90210,<br/>
-    "yearBuilt": 1960,<br/>
-    "squareFootage": 1000,<br/>
-    "bedrooms": 10,<br/>
-    "bathrooms": 5.5<br/>
-  }<br/>
+> http method: **[GET]**
 
-/fav ***NEED AUTH***<br/>
-  - receive back =><br/>
-    {<br/>
-    "userID": 1,<br/>
-    "houseID": 1,<br/>
-    "name": "Cool house",<br/>
-    "interestLevel": 75<br/>
-  }<br/>
+**Body**
+
+| name     | type   | required | description                       | 
+| -------- | ------ | -------- | --------------------------------- |
+| username | String | Yes      | Must be unique                    |
+
+**Example Body:**
+```
+{
+  username: 'lambda'
+}
+```
+
+**Example Response:** status 200 (OK)
+```
+[
+  {
+    "id": 2,
+    "name": "Nice view from patio",
+    "interestLevel": 80,
+    "zipCode": 10024,
+    "yearBuilt": 1975,
+    "squareFootage": 2500,
+    "bedrooms": 1,
+    "bathrooms": 0.5,
+    "price": 480500
+  }
+]
+```
