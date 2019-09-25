@@ -35,7 +35,8 @@ router.post('/login', (req, res) => {
 
 function generateToken(user) {
     const payload = {
-        username: user.username,
+        id: user.id,
+        username: user.username
     };
     const options = {
         expiresIn: '1d',
