@@ -1,12 +1,12 @@
 const db = require('../api/db-config');
 
 module.exports = {
-    find,
-    findBy,
-    findById,
-    add,
-    update,
-    remove,
+  find,
+  findBy,
+  findById,
+  add,
+  update,
+  remove,
 };
 
 function find() {
@@ -14,7 +14,7 @@ function find() {
 };
 
 function findBy(username) {
-    return db('users').where(username)
+  return db('users').where(username)
 }
 
 function findById(id) {
@@ -25,7 +25,7 @@ function findById(id) {
 
 function add(obj) {
   return db('users')
-    .insert(obj)
+    .insert(obj, 'id')
     .then(idArr => findById(idArr[0]))
 };
 
