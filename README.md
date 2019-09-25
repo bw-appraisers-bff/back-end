@@ -120,6 +120,26 @@ http method: **[GET]**
 ]
 ```
 --------------------
+
+method url: **/houses/:id**
+
+*id references the house id entry*
+
+http method: **[GET]**
+
+**Example Response:** status 200 (OK)
+```
+{
+  "id": 4,
+  "zipCode": 29083,
+  "yearBuilt": 1987,
+  "squareFootage": 2800,
+  "bedrooms": 2,
+  "bathrooms": 2,
+  "price": 345678
+}
+```
+--------------------
 method url: **/houses**
 
 http method: **[POST]**
