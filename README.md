@@ -4,7 +4,7 @@ Hosted at: https://appraisersbff.herokuapp.com/
 
 method url: **/**
 
-> http method: **[GET]**
+http method: **[GET]**
 
 **Example Response:** status 200 (OK)
 ```
@@ -18,7 +18,7 @@ method url: **/**
 ### Registering a user
 method url: **/auth/register**
 
-> http method: **[POST]**
+http method: **[POST]**
 
 **Body**
 
@@ -37,12 +37,12 @@ method url: **/auth/register**
 
 **Example Response:** status 201 (Created)
 
-===============================================================================
+--------------------
 
 ### Logging in a user
 method url: **/auth/login**
 
-> http method: **[POST]**
+http method: **[POST]**
 
 **Body**
 
@@ -74,9 +74,9 @@ method url: **/auth/login**
 
 # ABOUT ENDPOINT
 
-**NO AUTHENTICATION REQUIRED**
+### NO AUTHENTICATION REQUIRED
 
-method url: **/about**
+method url: */about*
 
 http method: **[GET]**
 
@@ -89,11 +89,11 @@ http method: **[GET]**
 
 # HOUSES ENDPOINT
 
-**AUTHENTICATION REQUIRED**
+### AUTHENTICATION REQUIRED
 
 method url: **/houses**
 
-> http method: **[GET]**
+http method: **[GET]**
 
 **Example Response:** status 200 (OK)
 ```
@@ -119,14 +119,51 @@ method url: **/houses**
   },
 ]
 ```
+--------------------
+method url: **/houses**
+
+http method: **[POST]**
+
+**Body**
+
+| name          | type    | required | description                       | 
+| ------------- | ------- | -------- | --------------------------------- |
+| zipCode       | Integer | Yes      | Max 5 digits                      |
+| yearBuilt     | Integer | Yes      | Max 4 digits                      |
+| squareFootage | Integer | Yes      |                                   |
+| bedrooms      | Integer | Yes      |                                   |
+| bathrooms     | Float   | Yes      |                                   |
+
+**Example Body:**
+```
+{
+    "zipCode": 99999,
+    "yearBuilt": 1946,
+    "squareFootage": 1000,
+    "bedrooms": 1,
+    "bathrooms": 3
+}
+```
+
+**Example Response:** status 201 (Created)
+```
+{
+  "id": 7,
+  "zipCode": 99999,
+  "yearBuilt": 1946,
+  "squareFootage": 1000,
+  "bedrooms": 1,
+  "bathrooms": 3
+}
+```
 
 # FAV ENDPOINT
 
-**AUTHENTICATION REQUIRED**
+### AUTHENTICATION REQUIRED
 
 method url: **/fav**
 
-> http method: **[GET]**
+http method: **[GET]**
 
 **Body**
 
@@ -156,4 +193,89 @@ method url: **/fav**
     "price": 480500
   }
 ]
+```
+--------------------
+method url: **/fav**
+
+http method: **[POST]**
+
+**Body**
+
+| name          | type    | required | description                       | 
+| ------------- | ------- | -------- | --------------------------------- |
+| userID        | Integer | Yes      | Id creation number of user        |
+| houseID       | Integer | Yes      | Id creation number of house       |
+| name          | String  | Yes      |                                   |
+| interestLevel | Integer | Yes      | Out of 100                        |
+
+**Example Body:**
+```
+{
+  "userID": 2,
+  "houseID": 7,
+  "name": "by the beach",
+  "interestLevel": 97
+}
+```
+
+**Example Response:** status 200 (OK)
+```
+{
+  "id": 7,
+  "userID": 2,
+  "houseID": 7,
+  "name": "by the beach",
+  "interestLevel": 97
+}
+```
+--------------------
+method url: **/fav/:id**
+*id references the fav id entry*
+
+http method: **[PUT]**
+
+**Body**
+
+| name          | type    | required | description                       | 
+| ------------- | ------- | -------- | --------------------------------- |
+| userID        | Integer | Yes      | Id creation number of user        |
+| houseID       | Integer | Yes      | Id creation number of house       |
+| name          | String  | Yes      |                                   |
+| interestLevel | Integer | Yes      | Out of 100                        |
+
+**Example Body:**
+```
+{
+  "userID": 2,
+  "houseID": 7,
+  "name": "by the pier",
+  "interestLevel": 100
+}
+```
+
+**Example Response:** status 200 (OK)
+```
+{
+  "id": 7,
+  "userID": 2,
+  "houseID": 7,
+  "name": "by the pier",
+  "interestLevel": 100
+}
+```
+--------------------
+method url: **/fav/:id**
+*id references the fav id entry*
+
+http method: **[DELETE]**
+
+**Example Response:** status 200 (OK)
+```
+{
+  "id": 7,
+  "userID": 2,
+  "houseID": 7,
+  "name": "by the pier",
+  "interestLevel": 100
+}
 ```
