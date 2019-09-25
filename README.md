@@ -173,7 +173,8 @@ http method: **[POST]**
   "yearBuilt": 1946,
   "squareFootage": 1000,
   "bedrooms": 1,
-  "bathrooms": 3
+  "bathrooms": 3,
+  "price": 101984
 }
 ```
 
