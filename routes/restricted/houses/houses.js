@@ -27,9 +27,16 @@ router.post('/', authMiddleware, mw.validateHouseObj, (req, res) => {
     Houses.add(newHouse)
         .then(house => {
             axios.get(`https://appraisers-bff.herokuapp.com/?bedrooms=${house.bedrooms}&bathrooms=${house.bathrooms}&squarefeet=${house.squareFootage}&yearbuilt=${house.yearBuilt}&zipcode=11111`)
-                .then(res => Prices.add(house.id, res.data))
+                .then(price => {
+                    Prices.add(house.id, price.data)
+                        .then(() => {
+                            Houses.findByIdWithPrice(house.id)
+                                .then(hse => res.status(200).json(hse))
+                                .catch(err => res.status(500).json({ message: 'error retrieving house results with price' }))
+                        })
+                        .catch(err => res.status(500).json({ message: 'error inputting price' }))
+                })
                 .catch(err => res.status(500).json({ message: 'error calculating price' }))
-            res.status(201).json(house)
         })
         .catch(err => res.status(400).json({ err: err.message }))
 });
@@ -39,12 +46,7 @@ router.put('/:id', authMiddleware, mw.validateHouseId, mw.validateHouseObj, (req
     const changes = req.body;
 
     Houses.update(id, changes)
-        .then(house => {
-            axios.get(`https://appraisers-bff.herokuapp.com/?bedrooms=${house.bedrooms}&bathrooms=${house.bathrooms}&squarefeet=${house.squareFootage}&yearbuilt=${house.yearBuilt}&zipcode=11111`)
-                .then(res => Prices.update(house.id, res.data))
-                .catch(err => res.status(500).json({ message: 'error calculating price' }))
-            res.status(200).json(house)
-        })
+        .then(house => res.status(200).json(house))
         .catch(err => res.status(400).json({ err: err.message }))
 });
 
