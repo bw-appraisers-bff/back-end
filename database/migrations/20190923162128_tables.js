@@ -27,6 +27,7 @@ exports.up = function(knex) {
     })
 
     .createTable('fav', tbl => {
+      tbl.increments()
       tbl.integer('userID', 3)
         .unsigned()
         .notNullable()
@@ -42,7 +43,6 @@ exports.up = function(knex) {
       tbl.string('name', 256)
         .notNullable()
       tbl.integer('interestLevel', 3)
-      tbl.primary(['userID', 'houseID'])
     })
 
     .createTable('prices', tbl => {
