@@ -230,6 +230,7 @@ http method: **[POST]**
 ```
 --------------------
 method url: **/fav/:id**
+
 *id references the fav id entry*
 
 http method: **[PUT]**
@@ -265,6 +266,7 @@ http method: **[PUT]**
 ```
 --------------------
 method url: **/fav/:id**
+
 *id references the fav id entry*
 
 http method: **[DELETE]**
