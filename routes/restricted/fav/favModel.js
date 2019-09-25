@@ -2,16 +2,26 @@ const db = require('../../../api/db-config');
 
 
 module.exports = {
-    find,
-    findById,
-    add,
-    update,
-    remove,
+  find,
+  findBy,
+  findById,
+  add,
+  update,
+  remove,
 };
 
 function find() {
   return db('fav')
 };
+
+function findBy(filter) {
+  return db('fav as f')
+    .join('users as u', 'u.id', 'f.userID')
+    .join('houses as h', 'h.id', 'f.houseID')
+    .join('prices as p', 'p.houseID', 'h.id')
+    .select('f.id', 'f.name', 'f.interestLevel', 'h.zipCode', 'h.yearBuilt', 'h.squareFootage', 'h.bedrooms', 'h.bathrooms', 'p.price')
+    .where(filter)
+}
 
 function findById(id) {
   return db('fav')

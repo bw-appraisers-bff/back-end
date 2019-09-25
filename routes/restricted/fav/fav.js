@@ -1,19 +1,19 @@
 const express = require('express');
 const router = express.Router();
 const Fav = require('./favModel');
-//const mw = require('./housesMiddleware');
+const mw = require('./favMiddleware');
 const authMiddleware = require('../../../auth/authMiddleware');
 
 
 router.get('/', authMiddleware, (req, res) => {
-    Fav.find()
-    .then(fav => {
-        res.status(200).json(fav)
-    })
+    const { username } = req.body
+
+    Fav.findBy({ username })
+    .then(fav => res.status(200).json(fav))
     .catch(err => res.status(400).json({ err: err.message }))
 });
 
-router.get('/:id', (req, res) => {
+router.get('/:id', authMiddleware, mw.validateFavId, (req, res) => {
     const { id } = req.params
 
     Fav.findById(id)
@@ -21,7 +21,7 @@ router.get('/:id', (req, res) => {
     .catch(err => res.status(400).json({ err: err.message }))
 });
 
-router.post('/', authMiddleware, (req, res) => {
+router.post('/', authMiddleware, mw.validateFavObj, (req, res) => {
     const newFav = req.body;
 
     Fav.add(newFav)
@@ -29,7 +29,7 @@ router.post('/', authMiddleware, (req, res) => {
         .catch(err => res.status(400).json({ err: err.message }))
 });
 
-router.put('/:id', authMiddleware, (req, res) => {
+router.put('/:id', authMiddleware, mw.validateFavId, mw.validateFavObj, (req, res) => {
     const { id } = req.params;
     const changes = req.body;
 
@@ -38,7 +38,7 @@ router.put('/:id', authMiddleware, (req, res) => {
         .catch(err => res.status(400).json({ err: err.message }))
 });
 
-router.delete('/:id', authMiddleware, (req, res) => {
+router.delete('/:id', authMiddleware, mw.validateFavId, (req, res) => {
     const { id } = req.params;
 
     Fav.remove(id)
