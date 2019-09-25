@@ -128,11 +128,11 @@ http method: **[POST]**
 
 | name          | type    | required | description                       | 
 | ------------- | ------- | -------- | --------------------------------- |
-| zipCode       | Integer | Yes      | Max 5 digits                      |
-| yearBuilt     | Integer | Yes      | Max 4 digits                      |
+| zipCode       | Integer | Yes      | Must be 5 digits                  |
+| yearBuilt     | Integer | Yes      | Must be 4 digits                  |
 | squareFootage | Integer | Yes      |                                   |
-| bedrooms      | Integer | Yes      |                                   |
-| bathrooms     | Float   | Yes      |                                   |
+| bedrooms      | Integer | Yes      | Must be > 1                       |
+| bathrooms     | Float   | Yes      | Must be > 0.5                     |
 
 **Example Body:**
 ```
