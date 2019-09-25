@@ -13,8 +13,10 @@ function find() {
 };
 
 function findById(id) {
-  return db('houses')
-    .where({ id })
+  return db('houses as h')
+    .join('prices as p', 'h.id', 'p.houseID')
+    .select('h.id', 'h.zipCode', 'h.yearBuilt', 'h.squareFootage', 'h.bedrooms', 'h.bathrooms', 'p.price')
+    .where({ houseID: id })
     .first()
 };
 
