@@ -19,7 +19,7 @@ function findBy(filter) {
     .join('users as u', 'u.id', 'f.userID')
     .join('houses as h', 'h.id', 'f.houseID')
     .join('prices as p', 'p.houseID', 'h.id')
-    .select('f.id', 'f.name', 'f.interestLevel', 'h.zipCode', 'h.yearBuilt', 'h.squareFootage', 'h.bedrooms', 'h.bathrooms', 'p.price')
+    .select('f.id', 'f.name', 'f.interestLevel', 'h.id as houseID', 'h.zipCode', 'h.yearBuilt', 'h.squareFootage', 'h.bedrooms', 'h.bathrooms', 'p.price')
     .where(filter)
 }
 

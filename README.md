@@ -185,6 +185,7 @@ http method: **[GET]**
     "id": 2,
     "name": "Nice view from patio",
     "interestLevel": 80,
+    "houseID: 7,
     "zipCode": 10024,
     "yearBuilt": 1975,
     "squareFootage": 2500,
