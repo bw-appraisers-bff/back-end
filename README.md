@@ -1,4 +1,14 @@
+# Build Week: Appraiser's BFF Backend
+
 Hosted at: https://appraisersbff.herokuapp.com/
+
+- [Sanity Check](#sanity-check)
+- [Register & Login Endpoints](#register-and-login-endpoints)
+  - [Register](#registering-a-user)
+  - [Login](#logging-in-a-user)
+- [About Endpoint](#about-endpoint)
+- [Houses Endpoint](#houses-endpoint)
+- [Fav Endpoint](#fav-endpoint)
 
 # SANITY CHECK
 
@@ -13,7 +23,7 @@ http method: **[GET]**
 }
 ```
 
-# REGISTER & LOGIN ENDPOINTS
+# REGISTER AND LOGIN ENDPOINTS
 
 ### Registering a user
 method url: **/auth/register**
