@@ -45,7 +45,7 @@ describe('/houses endpoints', () => {
       squareFootage: 1000,
       bedrooms: 1,
       bathrooms: 3,
-      price: 452183
+      price: 109293
     })
   })
 
@@ -84,7 +84,7 @@ describe('/houses endpoints', () => {
       zipCode: 90210,
       yearBuilt: 1960,
       squareFootage: 1000,
-      bedrooms: 10,
+      bedrooms: 8,
       bathrooms: 5.5
     })
   })
