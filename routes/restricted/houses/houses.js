@@ -10,7 +10,7 @@ const authMiddleware = require('../../../auth/authMiddleware');
 router.get('/', authMiddleware, (req, res) => {
     Houses.find()
     .then(houses => res.status(200).json(houses)) 
-    .catch(err => res.status(400).json({ err: err.message }))
+    .catch(err => res.status(500).json({ err: err.message }))
 });
 
 router.get('/:id', authMiddleware, mw.validateHouseId, (req, res) => {
@@ -18,7 +18,7 @@ router.get('/:id', authMiddleware, mw.validateHouseId, (req, res) => {
 
     Houses.findByIdWithPrice(id)
     .then(houses => res.status(200).json(houses))
-    .catch(err => res.status(400).json({ err: err.message }))
+    .catch(err => res.status(500).json({ err: err.message }))
 });
 
 router.post('/', authMiddleware, mw.validateHouseObj, (req, res) => {
@@ -31,14 +31,14 @@ router.post('/', authMiddleware, mw.validateHouseObj, (req, res) => {
                     Prices.add(house.id, price.data)
                         .then(() => {
                             Houses.findByIdWithPrice(house.id)
-                                .then(hse => res.status(200).json(hse))
+                                .then(hse => res.status(201).json(hse))
                                 .catch(err => res.status(500).json({ message: 'error retrieving house results with price' }))
                         })
                         .catch(err => res.status(500).json({ message: 'error inputting price' }))
                 })
                 .catch(err => res.status(500).json({ message: 'error calculating price' }))
         })
-        .catch(err => res.status(400).json({ err: err.message }))
+        .catch(err => res.status(500).json({ err: err.message }))
 });
 
 router.put('/:id', authMiddleware, mw.validateHouseId, mw.validateHouseObj, (req, res) => {
@@ -47,7 +47,7 @@ router.put('/:id', authMiddleware, mw.validateHouseId, mw.validateHouseObj, (req
 
     Houses.update(id, changes)
         .then(house => res.status(200).json(house))
-        .catch(err => res.status(400).json({ err: err.message }))
+        .catch(err => res.status(500).json({ err: err.message }))
 });
 
 router.delete('/:id', authMiddleware, mw.validateHouseId, (req, res) => {
@@ -55,7 +55,7 @@ router.delete('/:id', authMiddleware, mw.validateHouseId, (req, res) => {
 
     Houses.remove(id)
         .then(house => res.status(200).json(house))
-        .catch(err => res.status(400).json({ err: err.message }))
+        .catch(err => res.status(500).json({ err: err.message }))
 });
 
 module.exports = router;

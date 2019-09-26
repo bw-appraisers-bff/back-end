@@ -61,7 +61,6 @@ function validateUsername (req, res, next) {
 
   Users.findBy({ username })
     .then(obj =>{
-      console.log(obj)
       if (obj.length) next()
       else res.status(404).json({ message: 'user does not exist' })
     })

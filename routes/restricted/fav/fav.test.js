@@ -12,7 +12,7 @@ describe('/fav endpoints', () => {
     const res = await request(server)
       .get('/fav')
       .send({ username: 'admin' })
-    
+
     expect(authMiddleware).toBeCalled()
     expect(res.status).toBe(200)
     expect(res.body[1]).toEqual({
@@ -30,7 +30,6 @@ describe('/fav endpoints', () => {
   })
 
   it('POST /fav returns an object', async () => {
-    console.log('STARTING POST TEST')
     const res = await request(server)
       .post('/fav')
       .send({
@@ -39,7 +38,7 @@ describe('/fav endpoints', () => {
         name: "by the beach",
         interestLevel: 97
       })
-    console.log('POST NO LONGER AWAITING')
+
     expect(authMiddleware).toBeCalled()
     expect(res.status).toBe(201)
     expect(res.body).toEqual({
@@ -52,7 +51,6 @@ describe('/fav endpoints', () => {
   })
 
   it('PUT /fav/:id returns the updated object', async () => {
-    console.log('STARTING PUT REQUEST')
     const res = await request(server)
       .put('/fav/5')
       .send({
