@@ -1,44 +1,32 @@
-// const router = require('express').Router();
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcryptjs');
-// const secrets = require('../auth/secrets');
-const Auth = require('./authModel');
-const router = require('./authRouter');
 const request = require('supertest');
-const db = require('../api/db-config'); 
+const server = require('../api/server')
+const prepTestDB = require('../helpers/prepTestDB')
+const validateUniqueUsername = require('./validateUniqueUsername')
+jest.mock('./validateUniqueUsername')
+
+beforeEach(prepTestDB)
+beforeEach(() => validateUniqueUsername.mockClear())
 
 describe('authRouter.js', () => {
 
-// resets tables
-  beforeEach(async () => {
-    await db('users').truncate()
-  })
-
-    describe('POST /register', () => {
-        it('returns saved user', () => {
-            request(router)
-            .post('/register')
-            .send('username=admin', 'password=password134')
-            .set('Accept', 'application/json')
-            .expect(200)
-            .end(function(err, res) {
-                if(err) return document(err);
-                document();
-            })
+    describe('POST /auth/register', () => {
+        it('creates a new user', async () => {
+            const res = await request(server)
+                .post('/auth/register')
+                .send({ name: 'realtor', password: 'disguised!'})
+            
+            expect(validateUniqueUsername).toBeCalled()
+            expect(res.status).toBe(201)
         })
     })
+
     describe('POST /login', () => {
-        it('returns a token', () => {
-            request(router)
-            .post('/login')
-            .send('username=admin', 'password=password1234')
-            .then(res => console.log(res))
-            // .set('token','application/json')
-            // .expect(200)
-            // .end(function(err, res) {
-            //     if(err)return done(err);
-            //     done()
-            // })
+        it('returns 200 OK', async () => {            
+            const res = await request(server)
+                .post('/auth/login')
+                .send({ "name": "admin", "password": "password1234" })
+
+            expect(res.status).toBe(200)
         })
     })
 })
