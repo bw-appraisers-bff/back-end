@@ -31,6 +31,8 @@ function validateFavObj (req, res, next) {
   else if (!fav.userID) res.status(404).json({ message: 'missing userID field' })
   else if (!fav.houseID) res.status(404).json({ message: 'missing houseID field' })
   else if (!fav.name) res.status(404).json({ message: 'missing name field' })
+  else if (!fav.interestLevel) res.status(404).json({ message: 'missing interestLevel field' })
+  else if (fav.interestLevel < 0 || fav.interestLevel > 100) res.status(400).json({ message: 'interestLevel must be between 0 and 100' })
   else next()
 }
 

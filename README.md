@@ -240,7 +240,7 @@ http method: **[POST]**
 | userID        | Integer | Yes      | Id creation number of user        |
 | houseID       | Integer | Yes      | Id creation number of house       |
 | name          | String  | Yes      |                                   |
-| interestLevel | Integer | Yes      | Out of 100                        |
+| interestLevel | Integer | Yes      | From 0 to 100                     |
 
 **Example Body:**
 ```
