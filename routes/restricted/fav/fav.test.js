@@ -2,16 +2,10 @@ const request = require('supertest')
 const server = require('../../../api/server')
 const prepTestDB = require('../../../helpers/prepTestDB')
 const authMiddleware = require('../../../auth/authMiddleware')
-const validateFavId = require('./middleware/validateFavId')
-const validateFavObj = require('./middleware/validateFavObj')
 jest.mock('../../../auth/authMiddleware')
-jest.mock('./middleware/validateFavId')
-jest.mock('./middleware/validateFavObj')
 
 beforeEach(prepTestDB)
 beforeEach(() => authMiddleware.mockClear())
-beforeEach(() => validateFavId.mockClear())
-beforeEach(() => validateFavObj.mockClear())
 
 describe('/fav endpoints', () => {
   it('GET /fav returns an array', async () => {
@@ -47,7 +41,6 @@ describe('/fav endpoints', () => {
       })
     console.log('POST NO LONGER AWAITING')
     expect(authMiddleware).toBeCalled()
-    expect(validateFavObj).toBeCalled()
     expect(res.status).toBe(201)
     expect(res.body).toEqual({
       id: 7,
@@ -70,8 +63,6 @@ describe('/fav endpoints', () => {
       })
     
     expect(authMiddleware).toBeCalled()
-    expect(validateFavId).toBeCalled()
-    expect(validateFavObj).toBeCalled()
     expect(res.status).toBe(200)
     expect(res.body).toEqual({
       id: 5,
@@ -87,7 +78,6 @@ describe('/fav endpoints', () => {
       .delete('/fav/4')
     
     expect(authMiddleware).toBeCalled()
-    expect(validateFavId).toBeCalled()
     expect(res.status).toBe(200)
     expect(res.body).toEqual({
       id: 4,
