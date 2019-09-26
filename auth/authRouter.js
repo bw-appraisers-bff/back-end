@@ -13,7 +13,7 @@ router.post('/register', mw.validateUniqueUsername, (req, res) => {
 
     Users.add(user)
         .then(saved => res.status(201).json(saved))
-        .catch(err => res.status(400).json({ err: err.message }))
+        .catch(err => res.status(500).json({ err: err.message }))
 });
 
 

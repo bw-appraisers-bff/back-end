@@ -10,7 +10,7 @@ describe('authRouter.js', () => {
         it('creates a new user', async () => {
             const res = await request(server)
                 .post('/auth/register')
-                .send({ username: 'realtor', password: 'disguised!'})
+                .send({ username: 'realtor', password: 'real_thor'})
             
             expect(res.status).toBe(201)
             expect(res.body.username).toBe('realtor')
