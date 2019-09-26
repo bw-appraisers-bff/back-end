@@ -7,6 +7,7 @@ module.exports = {
   validateFavObj,
   validateUserID,
   validateHouseID,
+  validateUsername,
 }
 
 function validateFavId (req, res, next) {
@@ -53,4 +54,16 @@ function validateHouseID (req, res, next) {
       else res.status(404).json({ message: 'house does not exist' })
     })
     .catch(err => res.status(500).json({ message: 'error validating houseID in obj' }))
+}
+
+function validateUsername (req, res, next) {
+  const { username } = req.body
+
+  Users.findBy({ username })
+    .then(obj =>{
+      console.log(obj)
+      if (obj.length) next()
+      else res.status(404).json({ message: 'user does not exist' })
+    })
+    .catch(err => res.status(500).json({ message: 'error validating username in obj' }))
 }
