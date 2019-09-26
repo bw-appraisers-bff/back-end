@@ -1,11 +1,8 @@
 const request = require('supertest');
 const server = require('../api/server')
 const prepTestDB = require('../helpers/prepTestDB')
-const validateUniqueUsername = require('./validateUniqueUsername')
-jest.mock('./validateUniqueUsername')
 
 beforeEach(prepTestDB)
-beforeEach(() => validateUniqueUsername.mockClear())
 
 describe('authRouter.js', () => {
 
@@ -15,7 +12,6 @@ describe('authRouter.js', () => {
                 .post('/auth/register')
                 .send({ username: 'realtor', password: 'disguised!'})
             
-            expect(validateUniqueUsername).toBeCalled()
             expect(res.status).toBe(201)
             expect(res.body.username).toBe('realtor')
             expect(res.body).toHaveProperty('password')

@@ -1,6 +1,10 @@
 const Users = require('./authModel')
 
-module.exports = (req, res, next) => {
+module.exports = {
+  validateUniqueUsername,
+}
+
+function validateUniqueUsername(req, res, next) {
   const { username } = req.body
 
   Users.findBy({ username })

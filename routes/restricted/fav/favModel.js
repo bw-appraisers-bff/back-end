@@ -31,7 +31,7 @@ function findById(id) {
 
 function add(obj) {
   return db('fav')
-    .insert(obj)
+    .insert(obj, 'id')
     .then(idArr => findById(idArr[0]))
 };
 
