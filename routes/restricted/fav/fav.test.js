@@ -22,16 +22,16 @@ describe('/fav endpoints', () => {
     expect(authMiddleware).toBeCalled()
     expect(res.status).toBe(200)
     expect(res.body[1]).toEqual({
-      "id": 4,
-      "name": "Public transportation accessible",
-      "interestLevel": 91,
-      "houseID": 4,
-      "zipCode": 29083,
-      "yearBuilt": 1987,
-      "squareFootage": 2800,
-      "bedrooms": 2,
-      "bathrooms": 2,
-      "price": 345678
+      id: 4,
+      name: "Public transportation accessible",
+      interestLevel: 91,
+      houseID: 4,
+      zipCode: 29083,
+      yearBuilt: 1987,
+      squareFootage: 2800,
+      bedrooms: 2,
+      bathrooms: 2,
+      price: 345678
     })
   })
 
@@ -40,32 +40,33 @@ describe('/fav endpoints', () => {
     const res = await request(server)
       .post('/fav')
       .send({
-        "userID": 2,
-        "houseID": 6,
-        "name": "by the beach",
-        "interestLevel": 97
+        userID: 2,
+        houseID: 6,
+        name: "by the beach",
+        interestLevel: 97
       })
-    
+    console.log('POST NO LONGER AWAITING')
     expect(authMiddleware).toBeCalled()
     expect(validateFavObj).toBeCalled()
     expect(res.status).toBe(201)
     expect(res.body).toEqual({
-      "id": 7,
-      "userID": 2,
-      "houseID": 6,
-      "name": "by the beach",
-      "interestLevel": 97
+      id: 7,
+      userID: 2,
+      houseID: 6,
+      name: "by the beach",
+      interestLevel: 97
     })
   })
 
   it('PUT /fav/:id returns the updated object', async () => {
+    console.log('STARTING PUT REQUEST')
     const res = await request(server)
       .put('/fav/5')
       .send({
-        "userID": 3,
-        "houseID": 5,
-        "name": "Great value!",
-        "interestLevel": 92
+        userID: 3,
+        houseID: 5,
+        name: "Great value!",
+        interestLevel: 92
       })
     
     expect(authMiddleware).toBeCalled()
@@ -73,11 +74,11 @@ describe('/fav endpoints', () => {
     expect(validateFavObj).toBeCalled()
     expect(res.status).toBe(200)
     expect(res.body).toEqual({
-      "id": 5,
-      "userID": 3,
-      "houseID": 5,
-      "name": "Great value!",
-      "interestLevel": 92
+      id: 5,
+      userID: 3,
+      houseID: 5,
+      name: "Great value!",
+      interestLevel: 92
     })
   })
 
@@ -89,11 +90,11 @@ describe('/fav endpoints', () => {
     expect(validateFavId).toBeCalled()
     expect(res.status).toBe(200)
     expect(res.body).toEqual({
-      "id": 4,
-      "userID": 1,
-      "houseID": 4,
-      "name": "Public transportation accessible",
-      "interestLevel": 91
+      id: 4,
+      userID: 1,
+      houseID: 4,
+      name: "Public transportation accessible",
+      interestLevel: 91
     })
   })
 })

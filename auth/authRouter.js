@@ -4,9 +4,9 @@ const bcrypt = require('bcryptjs');
 const Users = require('./authModel');
 const jwt = require('jsonwebtoken');
 const secrets = require('./secrets');
-const validateUniqueUsername = require('./validateUniqueUsername')
+const mw = require('./registerMiddleware')
 
-router.post('/register', validateUniqueUsername, (req, res) => {
+router.post('/register', mw.validateUniqueUsername, (req, res) => {
     let user = req.body;
     const hash= bcrypt.hashSync(user.password, 12); // 12 is hashing
     user.password = hash;
