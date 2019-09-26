@@ -8,7 +8,14 @@ Hosted at: https://appraisersbff.herokuapp.com/
   - [Login](#logging-in-a-user)
 - [About Endpoint](#about-endpoint)
 - [Houses Endpoint](#houses-endpoint)
+  - [GET All Houses](#get-all-houses)
+  - [GET Specific House](#get-specific-house)
+  - [POST New House](#post-new-house)
 - [Fav Endpoint](#fav-endpoint)
+  - [GET User Favorites](#get-user-favorites)
+  - [POST New Listing into Favorites](#post-new-listing-into-favorites)
+  - [PUT Listing from Favorites](#put-listing-from-favorites)
+  - [DELETE Listing from Favorites](#delete-listing-from-favorites)
 
 # SANITY CHECK
 
@@ -24,6 +31,8 @@ http method: **[GET]**
 ```
 
 # REGISTER AND LOGIN ENDPOINTS
+
+### NO AUTHENTICATION REQUIRED
 
 ### Registering a user
 method url: **/auth/register**
@@ -84,8 +93,6 @@ http method: **[POST]**
 
 # ABOUT ENDPOINT
 
-### NO AUTHENTICATION REQUIRED
-
 method url: */about*
 
 http method: **[GET]**
@@ -100,6 +107,8 @@ http method: **[GET]**
 # HOUSES ENDPOINT
 
 ### AUTHENTICATION REQUIRED
+
+#### GET All Houses
 
 method url: **/houses**
 
@@ -133,6 +142,8 @@ http method: **[GET]**
 ```
 --------------------
 
+#### GET Specific House
+
 method url: **/houses/:id**
 
 *id references the house id entry*
@@ -152,6 +163,9 @@ http method: **[GET]**
 }
 ```
 --------------------
+
+#### POST New House
+
 method url: **/houses**
 
 http method: **[POST]**
@@ -164,7 +178,7 @@ http method: **[POST]**
 | yearBuilt     | Integer | Yes      | Must be 4 digits, 1900 onwards             |
 | squareFootage | Integer | Yes      | Must be between 400 and 10000              |
 | bedrooms      | Integer | Yes      | Must be between 1 and 8                    |
-| bathrooms     | Float   | Yes      | Must be between .05 and 6, with half steps |
+| bathrooms     | Float   | Yes      | Must be between 0.5 and 6, with half steps |
 
 **Example Body:**
 ```
@@ -193,6 +207,8 @@ http method: **[POST]**
 # FAV ENDPOINT
 
 ### AUTHENTICATION REQUIRED
+
+#### GET User Favorites
 
 method url: **/fav/user**
 
@@ -229,6 +245,9 @@ http method: **[POST]**
 ]
 ```
 --------------------
+
+#### POST New Listing into Favorites
+
 method url: **/fav**
 
 http method: **[POST]**
@@ -263,6 +282,9 @@ http method: **[POST]**
 }
 ```
 --------------------
+
+#### PUT Listing from Favorites
+
 method url: **/fav/:id**
 
 *id references the fav id entry*
@@ -299,6 +321,9 @@ http method: **[PUT]**
 }
 ```
 --------------------
+
+#### DELETE Listing from Favorites
+
 method url: **/fav/:id**
 
 *id references the fav id entry*
