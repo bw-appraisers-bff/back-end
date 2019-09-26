@@ -5,7 +5,7 @@ const authMiddleware = require('../../../auth/authMiddleware');
 const mw = require('./favMiddleware')
 
 
-router.get('/', authMiddleware, mw.validateUsername,  (req, res) => {
+router.post('/user', authMiddleware, mw.validateUsername,  (req, res) => {
     const { username } = req.body
 
     Fav.findBy({ username })
