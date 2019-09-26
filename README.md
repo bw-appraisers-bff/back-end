@@ -30,6 +30,8 @@ method url: **/auth/register**
 
 http method: **[POST]**
 
+**Description:** To register a new user to the database.
+
 **Body**
 
 | name     | type   | required | description                       | 
@@ -53,6 +55,8 @@ http method: **[POST]**
 method url: **/auth/login**
 
 http method: **[POST]**
+
+**Description:** To log in as an existing user.
 
 **Body**
 
@@ -105,6 +109,8 @@ method url: **/houses**
 
 http method: **[GET]**
 
+**Description:** To retrieve an array of all houses in the database.
+
 **Example Response:** status 200 (OK)
 ```
 [
@@ -139,6 +145,8 @@ method url: **/houses/:id**
 
 http method: **[GET]**
 
+**Description:** To retrieve a specific house from the database.
+
 **Example Response:** status 200 (OK)
 ```
 {
@@ -155,6 +163,8 @@ http method: **[GET]**
 method url: **/houses**
 
 http method: **[POST]**
+
+**Description:** To add a new house to the database.
 
 **Body**
 
@@ -194,9 +204,11 @@ http method: **[POST]**
 
 ### AUTHENTICATION REQUIRED
 
-method url: **/fav**
+method url: **/fav/user**
 
-http method: **[GET]**
+http method: **[POST]**
+
+**Description:** To obtain an array of a user's saved listings.
 
 **Body**
 
@@ -232,6 +244,8 @@ http method: **[GET]**
 method url: **/fav**
 
 http method: **[POST]**
+
+**Description:** To save a new listing for the user.
 
 **Body**
 
@@ -269,6 +283,8 @@ method url: **/fav/:id**
 
 http method: **[PUT]**
 
+**Description:** To modify an existing saved listing.
+
 **Body**
 
 | name          | type    | required | description                       | 
@@ -304,6 +320,8 @@ method url: **/fav/:id**
 *id references the fav id entry*
 
 http method: **[DELETE]**
+
+**Description:** To delete an existing saved listing.
 
 **Example Response:** status 200 (OK)
 ```
