@@ -30,8 +30,6 @@ method url: **/auth/register**
 
 http method: **[POST]**
 
-**Description:** To register a new user to the database.
-
 **Body**
 
 | name     | type   | required | description                       | 
@@ -55,8 +53,6 @@ http method: **[POST]**
 method url: **/auth/login**
 
 http method: **[POST]**
-
-**Description:** To log in as an existing user.
 
 **Body**
 
@@ -109,8 +105,6 @@ method url: **/houses**
 
 http method: **[GET]**
 
-**Description:** To retrieve an array of all houses in the database.
-
 **Example Response:** status 200 (OK)
 ```
 [
@@ -119,7 +113,7 @@ http method: **[GET]**
     "zipCode": 90210,
     "yearBuilt": 1960,
     "squareFootage": 1000,
-    "bedrooms": 10,
+    "bedrooms": 8,
     "bathrooms": 5.5,
     "price": 690000
   },
@@ -145,8 +139,6 @@ method url: **/houses/:id**
 
 http method: **[GET]**
 
-**Description:** To retrieve a specific house from the database.
-
 **Example Response:** status 200 (OK)
 ```
 {
@@ -164,26 +156,24 @@ method url: **/houses**
 
 http method: **[POST]**
 
-**Description:** To add a new house to the database.
-
 **Body**
 
-| name          | type    | required | description                       | 
-| ------------- | ------- | -------- | --------------------------------- |
-| zipCode       | Integer | Yes      | Must be 5 digits                  |
-| yearBuilt     | Integer | Yes      | Must be 4 digits                  |
-| squareFootage | Integer | Yes      |                                   |
-| bedrooms      | Integer | Yes      | Must be > 1                       |
-| bathrooms     | Float   | Yes      | Must be > 0.5                     |
+| name          | type    | required | description                                | 
+| ------------- | ------- | -------- | ------------------------------------------ |
+| zipCode       | Integer | Yes      | Must be 5 digits                           |
+| yearBuilt     | Integer | Yes      | Must be 4 digits, 1900 onwards             |
+| squareFootage | Integer | Yes      | Must be between 400 and 10000              |
+| bedrooms      | Integer | Yes      | Must be between 1 and 8                    |
+| bathrooms     | Float   | Yes      | Must be between .05 and 6, with half steps |
 
 **Example Body:**
 ```
 {
-    "zipCode": 99999,
-    "yearBuilt": 1946,
-    "squareFootage": 1000,
-    "bedrooms": 1,
-    "bathrooms": 3
+  "zipCode": 99999,
+  "yearBuilt": 1946,
+  "squareFootage": 1000,
+  "bedrooms": 1,
+  "bathrooms": 3
 }
 ```
 
@@ -207,8 +197,6 @@ http method: **[POST]**
 method url: **/fav/user**
 
 http method: **[POST]**
-
-**Description:** To obtain an array of a user's saved listings.
 
 **Body**
 
@@ -245,8 +233,6 @@ method url: **/fav**
 
 http method: **[POST]**
 
-**Description:** To save a new listing for the user.
-
 **Body**
 
 | name          | type    | required | description                       | 
@@ -254,7 +240,7 @@ http method: **[POST]**
 | userID        | Integer | Yes      | Id creation number of user        |
 | houseID       | Integer | Yes      | Id creation number of house       |
 | name          | String  | Yes      |                                   |
-| interestLevel | Integer | Yes      | Out of 100                        |
+| interestLevel | Integer | Yes      | From 0 to 100                     |
 
 **Example Body:**
 ```
@@ -282,8 +268,6 @@ method url: **/fav/:id**
 *id references the fav id entry*
 
 http method: **[PUT]**
-
-**Description:** To modify an existing saved listing.
 
 **Body**
 
@@ -320,8 +304,6 @@ method url: **/fav/:id**
 *id references the fav id entry*
 
 http method: **[DELETE]**
-
-**Description:** To delete an existing saved listing.
 
 **Example Response:** status 200 (OK)
 ```
