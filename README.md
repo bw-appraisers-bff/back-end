@@ -114,7 +114,8 @@ http method: **[GET]**
     "yearBuilt": 1960,
     "squareFootage": 1000,
     "bedrooms": 10,
-    "bathrooms": 5.5
+    "bathrooms": 5.5,
+    "price": 690000
   },
   {
     "id": 2,
@@ -122,7 +123,8 @@ http method: **[GET]**
     "yearBuilt": 1975,
     "squareFootage": 2500,
     "bedrooms": 1,
-    "bathrooms": 0.5
+    "bathrooms": 0.5,
+    "price": 480500
   },
   {
     etc..
