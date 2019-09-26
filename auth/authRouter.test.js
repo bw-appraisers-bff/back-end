@@ -13,20 +13,23 @@ describe('authRouter.js', () => {
         it('creates a new user', async () => {
             const res = await request(server)
                 .post('/auth/register')
-                .send({ name: 'realtor', password: 'disguised!'})
+                .send({ username: 'realtor', password: 'disguised!'})
             
             expect(validateUniqueUsername).toBeCalled()
             expect(res.status).toBe(201)
+            expect(res.body.username).toBe('realtor')
+            expect(res.body).toHaveProperty('password')
         })
     })
 
     describe('POST /login', () => {
-        it('returns 200 OK', async () => {            
+        it('returns a token', async () => {            
             const res = await request(server)
                 .post('/auth/login')
-                .send({ "name": "admin", "password": "password1234" })
+                .send({ username: 'admin', password: 'password1234' })
 
             expect(res.status).toBe(200)
+            expect(res.body).toHaveProperty('token')
         })
     })
 })
