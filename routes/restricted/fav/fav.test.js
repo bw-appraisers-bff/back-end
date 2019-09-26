@@ -8,9 +8,9 @@ beforeEach(prepTestDB)
 beforeEach(() => authMiddleware.mockClear())
 
 describe('/fav endpoints', () => {
-  it('GET /fav returns an array', async () => {
+  it('POST /fav returns an array', async () => {
     const res = await request(server)
-      .get('/fav')
+      .post('/fav/user')
       .send({ username: 'admin' })
 
     expect(authMiddleware).toBeCalled()
