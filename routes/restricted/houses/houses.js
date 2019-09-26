@@ -16,7 +16,7 @@ router.get('/', authMiddleware, (req, res) => {
 router.get('/:id', authMiddleware, mw.validateHouseId, (req, res) => {
     const { id } = req.params
 
-    Houses.findById(id)
+    Houses.findByIdWithPrice(id)
     .then(houses => res.status(200).json(houses))
     .catch(err => res.status(400).json({ err: err.message }))
 });
