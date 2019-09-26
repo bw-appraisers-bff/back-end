@@ -10,11 +10,13 @@ module.exports = {
 };
 
 function find() {
-  return db('houses')
+  return db('houses as h')
+    .join('prices as p', 'h.id', 'p.houseID')
+    .select('h.id', 'h.zipCode', 'h.yearBuilt', 'h.squareFootage', 'h.bedrooms', 'h.bathrooms', 'p.price')
 };
 
 function findById(id) {
-  return db('houses as h')
+  return db('houses')
     .where({ id })
     .first()
 };
