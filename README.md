@@ -1,4 +1,4 @@
-#  ![Logo](https://i.imgur.com/JDulAno.png) Build Week: Appraiser's BFF Backend 
+#  ![Logo](https://i.imgur.com/JDulAno.png) Appraiser's BFF Backend 
 
 Hosted at: https://appraisersbff.herokuapp.com/
 
