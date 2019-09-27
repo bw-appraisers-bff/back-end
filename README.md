@@ -18,6 +18,7 @@ Hosted at: https://appraisersbff.herokuapp.com/
   - [POST New Listing into Favorites](#post-new-listing-into-favorites)
   - [PUT Listing from Favorites](#put-listing-from-favorites)
   - [DELETE Listing from Favorites](#delete-listing-from-favorites)
+- [Contributions](#contributions)
 
 # SANITY CHECK
 
@@ -406,3 +407,6 @@ http method: **[DELETE]**
   "interestLevel": 100
 }
 ```
+
+# Contributions
+Pull requests are welcome. For major changes, please open an issue first to discuss the change being implemented.
