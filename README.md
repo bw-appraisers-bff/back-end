@@ -413,5 +413,5 @@ http method: **[DELETE]**
 }
 ```
 
-# Contributions
+# CONTRIBUTIONS
 Pull requests are welcome. For major changes, please open an issue first to discuss the change being implemented.
