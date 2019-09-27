@@ -45,7 +45,8 @@ describe('/houses endpoints', () => {
       squareFootage: 1000,
       bedrooms: 1,
       bathrooms: 3,
-      price: 109293
+      // might need to fix price
+      price: 345999
     })
   })
 
