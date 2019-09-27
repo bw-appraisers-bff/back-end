@@ -2,7 +2,7 @@
 
 Hosted at: https://appraisersbff.herokuapp.com/
 
-- [Note on Price Calculation](#note-on-price-calculation)
+- [Note on Price Calculations](#note-on-price-calculations)
 - [Sanity Check](#sanity-check)
 - [Register & Login Endpoints](#register-and-login-endpoints)
   - [Register](#registering-a-user)
