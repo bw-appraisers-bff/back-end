@@ -21,9 +21,9 @@ Hosted at: https://appraisersbff.herokuapp.com/
   - [DELETE Listing from Favorites](#delete-listing-from-favorites)
 - [Contributions](#contributions)
 
-# Note on Price Calculation
+# NOTE ON PRICE CALCULATIONS
 
-We calculate the price of an appraisal via a Flask API on Heroku that our Data Scientists have deployed. If price calulations seems to be slow, or even errors out, please wait a couple of minutes and then try again. The site may be in a hibernated state and will need time to be woken before calculating the appraisal. Thank you.
+We calculate the price of an appraisal via a Flask API on Heroku that our Data Scientists have deployed. If price calulations seems to be slow, or even errors out, please wait a couple of minutes before trying again. The site may be in a hibernated state and will need time to awake before calculating the appraisal. Thank you.
 
 # SANITY CHECK
 
