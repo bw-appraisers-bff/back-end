@@ -11,6 +11,8 @@ Hosted at: https://appraisersbff.herokuapp.com/
   - [GET All Houses](#get-all-houses)
   - [GET Specific House](#get-specific-house)
   - [POST New House](#post-new-house)
+  - [PUT Existing House](#put-existing-house)
+  - [DELETE Existing House](#delete-existing-house)
 - [Fav Endpoint](#fav-endpoint)
   - [GET User Favorites](#get-user-favorites)
   - [POST New Listing into Favorites](#post-new-listing-into-favorites)
@@ -150,7 +152,7 @@ method url: **/houses/:id**
 
 http method: **[GET]**
 
-**Example Response:** status 200 (OK)
+**Example Response from `/houses/4`:** status 200 (OK)
 ```
 {
   "id": 4,
@@ -201,6 +203,70 @@ http method: **[POST]**
   "bedrooms": 1,
   "bathrooms": 3,
   "price": 101984
+}
+```
+--------------------
+
+#### PUT Existing House
+
+method url: **/houses/:id**
+
+*where `:id` is the house id*
+
+http method: **[PUT]**
+
+**Body**
+
+| name          | type    | required | description                                | 
+| ------------- | ------- | -------- | ------------------------------------------ |
+| zipCode       | Integer | Yes      | Must be 5 digits                           |
+| yearBuilt     | Integer | Yes      | Must be 4 digits, 1900 onwards             |
+| squareFootage | Integer | Yes      | Must be between 400 and 10000              |
+| bedrooms      | Integer | Yes      | Must be between 1 and 8                    |
+| bathrooms     | Float   | Yes      | Must be between 0.5 and 6, with half steps |
+
+**Example Body:**
+```
+{
+  "zipCode": 10000,
+  "yearBuilt": 1953,
+  "squareFootage": 9000,
+  "bedrooms": 2,
+  "bathrooms": 1
+}
+```
+
+**Example Response from `/houses/4`:** status 200 (OK)
+```
+{
+  "id": 4,
+  "zipCode": 10000,
+  "yearBuilt": 1953,
+  "squareFootage": 9000,
+  "bedrooms": 2,
+  "bathrooms": 1,
+  "price": 345678
+}
+```
+--------------------
+
+#### DELETE Existing House
+
+method url: **/houses/:id**
+
+*where `:id` is the house id*
+
+http method: **[DELETE]**
+
+**Example Response from `/houses/1`:** status 200 (OK)
+```
+{
+  "id": 1,
+  "zipCode": 90210,
+  "yearBuilt": 1960,
+  "squareFootage": 1000,
+  "bedrooms": 10,
+  "bathrooms": 5.5
 }
 ```
 
@@ -287,7 +353,7 @@ http method: **[POST]**
 
 method url: **/fav/:id**
 
-*id references the fav id entry*
+*where `:id` is the fav id*
 
 http method: **[PUT]**
 
@@ -310,7 +376,7 @@ http method: **[PUT]**
 }
 ```
 
-**Example Response:** status 200 (OK)
+**Example Response from `/fav/7`:** status 200 (OK)
 ```
 {
   "id": 7,
@@ -326,11 +392,11 @@ http method: **[PUT]**
 
 method url: **/fav/:id**
 
-*id references the fav id entry*
+*where `:id` is the fav id*
 
 http method: **[DELETE]**
 
-**Example Response:** status 200 (OK)
+**Example Response from `/fav/7`:** status 200 (OK)
 ```
 {
   "id": 7,
