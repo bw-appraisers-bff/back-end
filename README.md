@@ -1,7 +1,8 @@
-# Build Week: Appraiser's BFF Backend
+#  ![Logo](https://i.imgur.com/JDulAno.png) Appraiser's BFF Backend 
 
 Hosted at: https://appraisersbff.herokuapp.com/
 
+- [Note on Price Calculations](#note-on-price-calculations)
 - [Sanity Check](#sanity-check)
 - [Register & Login Endpoints](#register-and-login-endpoints)
   - [Register](#registering-a-user)
@@ -18,6 +19,11 @@ Hosted at: https://appraisersbff.herokuapp.com/
   - [POST New Listing into Favorites](#post-new-listing-into-favorites)
   - [PUT Listing from Favorites](#put-listing-from-favorites)
   - [DELETE Listing from Favorites](#delete-listing-from-favorites)
+- [Contributions](#contributions)
+
+# NOTE ON PRICE CALCULATIONS
+
+We calculate the price of an appraisal via a Flask API on Heroku that our Data Scientists have deployed. If price calulations seems to be slow, or even errors out, please wait a couple of minutes before trying again. The site may be in a hibernated state and will need time to awake before calculating the appraisal. Thank you.
 
 # SANITY CHECK
 
@@ -406,3 +412,6 @@ http method: **[DELETE]**
   "interestLevel": 100
 }
 ```
+
+# CONTRIBUTIONS
+Pull requests are welcome. For major changes, please open an issue first to discuss the change being implemented.
